@@ -21,17 +21,19 @@
 
   <!-- Service Worker Register -->
   <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("service-worker.js");
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('Service Worker registered'))
+        .catch(err => console.warn('SW registration failed', err));
     }
   </script>
 </head>
 
 <body>
   <!-- Injected placeholders to match script.js -->
-  <div id="authControls">
-    <button id="loginButton">Login with Google</button>
-    <button id="logoutButton" style="display:none">Logout</button>
+  <div id="authControls" style="padding:16px; text-align:center;">
+    <button id="loginButton" onclick="loginGoogle()" style="padding:10px 14px; border-radius:8px; background:#6a1bff; color:#fff; border:none;">Login with Google</button>
+    <button id="logoutButton" style="display:none; margin-left:8px; padding:10px 14px; border-radius:8px; background:#eee; color:#6a1bff; border:none;" onclick="logoutUser()">Logout</button>
   </div>
   <div id="appBox" style="display:none">
     <!-- App content placeholder -->

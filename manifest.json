@@ -1,9 +1,7 @@
 {
-  "name": "Money Note - Ovo Style",
+  "name": "Money Note",
   "short_name": "MoneyNote",
-  "description": "Aplikasi catatan pengeluaran & pemasukan ala OVO.",
-  "start_url": "index.html",
-  "scope": "./",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#6a1bff",

@@ -12,7 +12,11 @@ const provider = new GoogleAuthProvider();
 
 // LOGIN GOOGLE
 export function loginGoogle() {
-  return signInWithPopup(auth, provider);
+  return signInWithPopup(auth, provider)
+    .catch(err => {
+      console.error("Login error:", err);
+      alert("Login gagal. Periksa konfigurasi Firebase.");
+    });
 }
 
 // LOGOUT

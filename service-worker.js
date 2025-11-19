@@ -28,6 +28,11 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
+  // Bypass caching for Firebase scripts and gstatic
+  if (event.request.url.includes('gstatic.com') || event.request.url.includes('firebasejs')) {
+    return event.respondWith(fetch(event.request));
+  }
+
   // Try network first, fallback to cache, then offline fallback
   event.respondWith(
     fetch(event.request).then(response => {

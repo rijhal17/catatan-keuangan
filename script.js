@@ -113,7 +113,6 @@ onUserChanged((u) => {
     user = null;
 
     document.getElementById("loginBox").style.display = "block";
-    const appBoxEl = document.getElementById("appBox");
-if(appBoxEl) appBoxEl.style.display = "none";
+    document.getElementById("appBox").style.display = "none";
   }
 });
