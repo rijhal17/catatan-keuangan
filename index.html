@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- TITLE -->
+  <title>Money Note - Firebase Cloud</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6a1bff">
+
+  <!-- iPhone PWA Support -->
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <!-- Service Worker Register -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+</head>
+
+<body>
+  <!-- Injected placeholders to match script.js -->
+  <div id="authControls">
+    <button id="loginButton">Login with Google</button>
+    <button id="logoutButton" style="display:none">Logout</button>
+  </div>
+  <div id="appBox" style="display:none">
+    <!-- App content placeholder -->
+    <h1>App Content</h1>
+  </div>
+
+
+  <!-- ======================== -->
+  <!-- LOGIN PAGE -->
+  <!-- ======================== -->
+  <div id="loginBox" style="text-align:center; padding: 40px;">
+    <h2>Login Untuk Melanjutkan</h2>
+    <p>Gunakan Google untuk menyimpan data di cloud.</p>
+
+    <button onclick="loginGoogle()"
+      style="padding: 10px 20px; background:#6a1bff; color:white; border:none; border-radius:8px; font-size:16px;">
+      Login dengan Google
+    </button>
+  </div>
+
+
+  <!-- ======================== -->
+  <!-- APP PAGE -->
+  <!-- ======================== -->
+  <div id="appBox" style="display:none;">
+
+    <!-- HEADER SALDO -->
+    <div style="background:#6a1bff; padding:20px; color:white; text-align:center;">
+      <h2>Total Saldo</h2>
+      <h1 id="totalSaldo">Rp 0</h1>
+      <button onclick="logoutUser()"
+        style="margin-top:10px; padding:5px 12px; background:white; color:#6a1bff; border:0; border-radius:8px;">Logout</button>
+    </div>
+
+    <!-- INPUT BOX -->
+    <div id="inputBox" style="padding:20px;">
+      <h3>Tambah Transaksi</h3>
+
+      <label>Tanggal:</label>
+      <input type="date" id="tanggal">
+
+      <label>Kategori:</label>
+      <input type="text" id="kategori" placeholder="contoh: Gaji / Makan / Transport">
+
+      <label>Tipe:</label>
+      <select id="tipe">
+        <option value="masuk">Pemasukan</option>
+        <option value="keluar">Pengeluaran</option>
+      </select>
+
+      <label>Jumlah:</label>
+      <input type="text" id="jumlah" placeholder="Rp 0">
+
+      <button onclick="tambah()" style="margin-top:10px; background:#6a1bff; color:white; padding:10px; border:none; width:100%; border-radius:8px;">
+        Simpan Transaksi
+      </button>
+    </div>
+
+    <!-- RIWAYAT -->
+    <div id="riwayatBox" style="padding:20px;">
+      <h3>Riwayat Transaksi</h3>
+
+      <table id="tabelTransaksi" style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr style="background:#EEE;">
+            <th>Tanggal</th>
+            <th>Kategori</th>
+            <th>Tipe</th>
+            <th>Jumlah</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- FIREBASE + APP SCRIPT -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
